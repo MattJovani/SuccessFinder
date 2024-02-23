@@ -1,0 +1,1826 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.4",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let r=e.getAttribute("data-rocket-src");if(r&&0!==r.indexOf("data:")){0===r.indexOf("//")&&(r=location.protocol+r);try{let i=new URL(r).origin;i!==location.origin&&t.push({src:i,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(n){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._pendingWebpackRequests(this),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){if(await this._littleBreath(),!0===t.noModule&&"noModule"in HTMLScriptElement.prototype){t.setAttribute("data-rocket-status","skipped");return}return new Promise(navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(){let t={};function e(e,r){!function e(r){!t[r]&&(t[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),t[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),t[r].originalFunctions.remove.apply(r,arguments)});function i(e){return t[r].eventsToRewrite.indexOf(e)>=0?"rocket-"+e:e}}(e),t[e].eventsToRewrite.push(r)}function r(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}e(document,"DOMContentLoaded"),e(window,"DOMContentLoaded"),e(window,"load"),e(window,"pageshow"),e(document,"readystatechange"),r(document,"onreadystatechange"),r(window,"onload"),r(window,"onpageshow")}_delayJQueryReady(t){let e;function r(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}function i(i){if(i&&i.fn&&!t.allJQueries.includes(i)){i.fn.ready=i.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(i):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(i)),i([])};let n=i.fn.on;i.fn.on=i.fn.init.prototype.on=function(){return this[0]===window&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=r(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{let e=arguments[0][t];delete arguments[0][t],arguments[0][r(t)]=e})),n.apply(this,arguments),this},t.allJQueries.push(i)}e=i}i(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){i(t)}})}async _pendingWebpackRequests(t){let e=document.querySelector("script[data-webpack]");async function r(){return new Promise(t=>{e.addEventListener("load",t),e.addEventListener("error",t)})}e&&(await r(),await t._requestAnimFrame(),await t._pendingWebpackRequests(t))}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+	<script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start': new Date().getTime(),
+				event: 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s),
+				dl = l != 'dataLayer' ? '&l=' + l : '';
+			j.async = true;
+			j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-PQ2ZGC9');
+	</script>
+
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<!--link rel="manifest" href="/site.webmanifest"-->
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#000000">
+    <meta name="theme-color" content="#ffffff">
+
+                <script data-minify="1" src="https://www.successfinder.com/wp-content/cache/min/1/ajax/libs/jquery/3.0.0/jquery.min.js?ver=1702913937" defer></script>
+            <script data-minify="1" src="https://www.successfinder.com/wp-content/cache/min/1/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js?ver=1702913937" defer></script>
+            <link data-minify="1" rel="stylesheet" href="https://www.successfinder.com/wp-content/cache/min/1/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css?ver=1702913937" />
+        <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<link rel="alternate" hreflang="en" href="https://www.successfinder.com/about-successfinder/" />
+<link rel="alternate" hreflang="fr" href="https://www.successfinder.com/fr/a-propos/" />
+<link rel="alternate" hreflang="x-default" href="https://www.successfinder.com/about-successfinder/" />
+
+            <script data-no-defer="1" data-ezscrex="false" data-cfasync="false" data-pagespeed-no-defer data-cookieconsent="ignore">
+                var ctPublicFunctions = {"_ajax_nonce":"d2b6641429","_rest_nonce":"7987ee1d44","_ajax_url":"\/wp-admin\/admin-ajax.php","_rest_url":"https:\/\/www.successfinder.com\/wp-json\/","data__cookies_type":"alternative","data__ajax_type":"rest","text__wait_for_decoding":"Decoding the contact data, let us a few seconds to finish. Anti-Spam by CleanTalk","cookiePrefix":"","wprocket_detected":true}
+            </script>
+        
+            <script data-no-defer="1" data-ezscrex="false" data-cfasync="false" data-pagespeed-no-defer data-cookieconsent="ignore">
+                var ctPublic = {"_ajax_nonce":"d2b6641429","settings__forms__check_internal":"0","settings__forms__check_external":"0","settings__forms__search_test":"1","blog_home":"https:\/\/www.successfinder.com\/","pixel__setting":"3","pixel__enabled":true,"pixel__url":"https:\/\/moderate2-v4.cleantalk.org\/pixel\/292158859dd1228fddb70c69c774dd8e.gif","data__email_check_before_post":"1","data__cookies_type":"alternative","data__key_is_ok":true,"data__visible_fields_required":true,"data__to_local_storage":[],"wl_brandname":"Anti-Spam by CleanTalk","wl_brandname_short":"CleanTalk","ct_checkjs_key":"4ddccfc8d44f4fea861a76ee23e94be85a4201903e27969d755b75e501d2dc52","emailEncoderPassKey":"3c847e954e03b4b0168317aeddd41f26"}
+            </script>
+        
+	<!-- This site is optimized with the Yoast SEO plugin v21.9.1 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>SuccessFinder - The evolution and the team behind our solutions</title>
+	<meta name="description" content="The evolution and the team behind our solutions, data, and science. Discover how SuccessFinder helps to simplify HR decisions with powerful behavioral data." />
+	<link rel="canonical" href="https://www.successfinder.com/about-successfinder/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="SuccessFinder - The evolution and the team behind our solutions" />
+	<meta property="og:description" content="The evolution and the team behind our solutions, data, and science. Discover how SuccessFinder helps to simplify HR decisions with powerful behavioral data." />
+	<meta property="og:url" content="https://www.successfinder.com/about-successfinder/" />
+	<meta property="og:site_name" content="SuccessFinder" />
+	<meta property="article:publisher" content="https://www.facebook.com/successfinderinc/" />
+	<meta property="article:modified_time" content="2023-08-21T19:41:42+00:00" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@SuccessFinder1" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.successfinder.com/about-successfinder/","url":"https://www.successfinder.com/about-successfinder/","name":"SuccessFinder - The evolution and the team behind our solutions","isPartOf":{"@id":"https://www.successfinder.com/#website"},"datePublished":"2020-03-13T16:34:53+00:00","dateModified":"2023-08-21T19:41:42+00:00","description":"The evolution and the team behind our solutions, data, and science. Discover how SuccessFinder helps to simplify HR decisions with powerful behavioral data.","breadcrumb":{"@id":"https://www.successfinder.com/about-successfinder/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.successfinder.com/about-successfinder/"]}]},{"@type":"BreadcrumbList","@id":"https://www.successfinder.com/about-successfinder/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.successfinder.com/"},{"@type":"ListItem","position":2,"name":"About us"}]},{"@type":"WebSite","@id":"https://www.successfinder.com/#website","url":"https://www.successfinder.com/","name":"SuccessFinder","description":"Unlock potential with behavioral insights","publisher":{"@id":"https://www.successfinder.com/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.successfinder.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://www.successfinder.com/#organization","name":"SuccessFinder","url":"https://www.successfinder.com/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://www.successfinder.com/#/schema/logo/image/","url":"https://www.successfinder.com/wp-content/uploads/2022/02/95085837_2976053675822479_2710413986305671168_n.jpg","contentUrl":"https://www.successfinder.com/wp-content/uploads/2022/02/95085837_2976053675822479_2710413986305671168_n.jpg","width":960,"height":960,"caption":"SuccessFinder"},"image":{"@id":"https://www.successfinder.com/#/schema/logo/image/"},"sameAs":["https://www.facebook.com/successfinderinc/","https://twitter.com/SuccessFinder1","https://www.instagram.com/successfinderinc/","https://www.linkedin.com/company/successfinder","https://www.youtube.com/channel/UC7bn0rCeBsHBKfPPPgSOcOQ"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//js.hs-scripts.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+
+<link rel="alternate" type="application/rss+xml" title="SuccessFinder &raquo; Feed" href="https://www.successfinder.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="SuccessFinder &raquo; Comments Feed" href="https://www.successfinder.com/comments/feed/" />
+<link data-minify="1" rel='stylesheet' id='roi-style-css' href='https://www.successfinder.com/wp-content/cache/min/1/wp-content/plugins/calculateur-ROI/css/styles-roi.css?ver=1703171061' type='text/css' media='all' />
+<link rel='stylesheet' id='ct_public_css-css' href='https://www.successfinder.com/wp-content/plugins/cleantalk-spam-protect/css/cleantalk-public.min.css?ver=6.25.1' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='fancybox-for-wp-css' href='https://www.successfinder.com/wp-content/cache/min/1/wp-content/plugins/fancybox-for-wordpress/assets/css/fancybox.css?ver=1703171061' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='understrap-styles-css' href='https://www.successfinder.com/wp-content/cache/min/1/wp-content/themes/successfinder/css/theme.min.css?ver=1703171061' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='custom-reo-styles-css' href='https://www.successfinder.com/wp-content/cache/min/1/wp-content/themes/successfinder/css/page-roi.css?ver=1703171061' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='custom-optimisation-styles-css' href='https://www.successfinder.com/wp-content/cache/min/1/wp-content/themes/successfinder/css/optimisation.css?ver=1703171062' type='text/css' media='all' />
+<script type="text/javascript" src="https://www.successfinder.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" defer></script>
+<script type="text/javascript" src="https://www.successfinder.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js" defer></script>
+<script type="text/javascript" data-pagespeed-no-defer src="https://www.successfinder.com/wp-content/plugins/cleantalk-spam-protect/js/apbct-public-bundle.min.js?ver=6.25.1" id="ct_public_functions-js" defer></script>
+<script data-minify="1" type="text/javascript" src="https://www.successfinder.com/wp-content/cache/min/1/wp-content/plugins/fancybox-for-wordpress/assets/js/jquery.fancybox.js?ver=1703171062" id="fancybox-for-wp-js" defer></script>
+<script type="text/javascript" id="spbc_cookie-js-extra">
+/* <![CDATA[ */
+var spbcPublic = {"_ajax_nonce":"d2b6641429","_rest_nonce":"7987ee1d44","_ajax_url":"\/wp-admin\/admin-ajax.php","_rest_url":"https:\/\/www.successfinder.com\/wp-json\/","data__set_cookies":"1","data__set_cookies__alt_sessions_type":"0"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.successfinder.com/wp-content/plugins/security-malware-firewall/js/spbc-cookie.min.js?ver=2.126.1" id="spbc_cookie-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://www.successfinder.com/wp-content/cache/min/1/wp-content/themes/successfinder/js/aos.js?ver=1703171062" id="aos-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.successfinder.com/wp-content/themes/successfinder/js/mixitup.min.js?ver=3.3.1" id="mixitup-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.successfinder.com/wp-content/themes/successfinder/js/mixitup-pagination.min.js?ver=3.3.0" id="mixitup-pagination-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.successfinder.com/wp-content/themes/successfinder/js/mixitup-multifilter.min.js?ver=3.3.6" id="mixitup-multifilter-js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://www.successfinder.com/wp-content/themes/successfinder/js/slick.min.js?ver=6.4.2" id="slickjs-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="module" data-rocket-src="https://www.successfinder.com/wp-content/cache/min/1/wp-content/themes/successfinder/js/custom.js?ver=1703171062" defer></script><link rel="https://api.w.org/" href="https://www.successfinder.com/wp-json/" /><link rel="alternate" type="application/json" href="https://www.successfinder.com/wp-json/wp/v2/pages/650" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.successfinder.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.4.2" />
+<link rel='shortlink' href='https://www.successfinder.com/?p=650' />
+<link rel="alternate" type="application/json+oembed" href="https://www.successfinder.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.successfinder.com%2Fabout-successfinder%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.successfinder.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.successfinder.com%2Fabout-successfinder%2F&#038;format=xml" />
+<meta name="generator" content="WPML ver:4.6.7 stt:1,4;" />
+
+<!-- Fancybox for WordPress v3.3.3 -->
+<style type="text/css">
+	.fancybox-slide--image .fancybox-content{background-color: #FFFFFF}div.fancybox-caption{display:none !important;}
+	
+	img.fancybox-image{border-width:10px;border-color:#FFFFFF;border-style:solid;}
+	div.fancybox-bg{background-color:rgba(102,102,102,0.3);opacity:1 !important;}div.fancybox-content{border-color:#FFFFFF}
+	div#fancybox-title{background-color:#FFFFFF}
+	div.fancybox-content{background-color:#FFFFFF}
+	div#fancybox-title-inside{color:#333333}
+	
+	
+	
+	div.fancybox-caption p.caption-title{display:inline-block}
+	div.fancybox-caption p.caption-title{font-size:14px}
+	div.fancybox-caption p.caption-title{color:#333333}
+	div.fancybox-caption {color:#333333}div.fancybox-caption p.caption-title {background:#fff; width:auto;padding:10px 30px;}div.fancybox-content p.caption-title{color:#333333;margin: 0;padding: 5px 0;}
+</style><script type="rocketlazyloadscript" data-rocket-type="text/javascript">window.addEventListener('DOMContentLoaded', function() {
+	jQuery(function () {
+
+		var mobileOnly = false;
+		
+		if (mobileOnly) {
+			return;
+		}
+
+		jQuery.fn.getTitle = function () { // Copy the title of every IMG tag and add it to its parent A so that fancybox can show titles
+			var arr = jQuery("a[data-fancybox]");
+									jQuery.each(arr, function() {
+										var title = jQuery(this).children("img").attr("title");
+										 var caption = jQuery(this).next("figcaption").html();
+                                        if(caption && title){jQuery(this).attr("title",title+" " + caption)}else if(title){ jQuery(this).attr("title",title);}else if(caption){jQuery(this).attr("title",caption);}
+									});			}
+
+		// Supported file extensions
+
+				var thumbnails = jQuery("a:has(img)").not(".nolightbox").not('.envira-gallery-link').not('.ngg-simplelightbox').filter(function () {
+			return /\.(jpe?g|png|gif|mp4|webp|bmp|pdf)(\?[^/]*)*$/i.test(jQuery(this).attr('href'))
+		});
+		
+
+		// Add data-type iframe for links that are not images or videos.
+		var iframeLinks = jQuery('.fancyboxforwp').filter(function () {
+			return !/\.(jpe?g|png|gif|mp4|webp|bmp|pdf)(\?[^/]*)*$/i.test(jQuery(this).attr('href'))
+		}).filter(function () {
+			return !/vimeo|youtube/i.test(jQuery(this).attr('href'))
+		});
+		iframeLinks.attr({"data-type": "iframe"}).getTitle();
+
+				// Gallery All
+		thumbnails.addClass("fancyboxforwp").attr("data-fancybox", "gallery").getTitle();
+		iframeLinks.attr({"data-fancybox": "gallery"}).getTitle();
+
+		// Gallery type NONE
+		
+		// Call fancybox and apply it on any link with a rel atribute that starts with "fancybox", with the options set on the admin panel
+		jQuery("a.fancyboxforwp").fancyboxforwp({
+			loop: false,
+			smallBtn: false,
+			zoomOpacity: "auto",
+			animationEffect: "fade",
+			animationDuration: 500,
+			transitionEffect: "fade",
+			transitionDuration: "300",
+			overlayShow: true,
+			overlayOpacity: "0.3",
+			titleShow: true,
+			titlePosition: "inside",
+			keyboard: true,
+			showCloseButton: false,
+			arrows: true,
+			clickContent:false,
+			clickSlide: "close",
+			mobile: {
+				clickContent: function (current, event) {
+					return current.type === "image" ? "toggleControls" : false;
+				},
+				clickSlide: function (current, event) {
+					return current.type === "image" ? "close" : "close";
+				},
+			},
+			wheel: false,
+			toolbar: true,
+			preventCaptionOverlap: true,
+			onInit: function() { },			onDeactivate
+	: function() { },		beforeClose: function() { },			afterShow: function(instance) { jQuery( ".fancybox-image" ).on("click", function( ){ ( instance.isScaledDown() ) ? instance.scaleToActual() : instance.scaleToFit() }) },				afterClose: function() { },					caption : function( instance, item ) {var title ="";if("undefined" != typeof jQuery(this).context ){var title = jQuery(this).context.title;} else { var title = ("undefined" != typeof jQuery(this).attr("title")) ? jQuery(this).attr("title") : false;}var caption = jQuery(this).data('caption') || '';if ( item.type === 'image' && title.length ) {caption = (caption.length ? caption + '<br />' : '') + '<p class="caption-title">'+title+'</p>' ;}return caption;},
+		afterLoad : function( instance, current ) {current.$content.append('<div class=\"fancybox-custom-caption inside-caption\" style=\" position: absolute;left:0;right:0;color:#000;margin:0 auto;bottom:0;text-align:center;background-color:#FFFFFF \">' + current.opts.caption + '</div>');},
+			})
+		;
+
+			})
+});</script>
+<!-- END Fancybox for WordPress -->
+<!-- HFCM by 99 Robots - Snippet # 2: Meta (FB) Tracking -->
+<!-- Meta Pixel Code -->
+<script type="rocketlazyloadscript">
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1653354998332395');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1653354998332395&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- /end HFCM by 99 Robots -->
+<!-- HFCM by 99 Robots - Snippet # 3: FB Domain Verification -->
+<meta name="facebook-domain-verification" content="623a4kb423z7qmvf1o2feb0gpv3rfe" />
+<!-- /end HFCM by 99 Robots -->
+<!-- HFCM by 99 Robots - Snippet # 5: ZoomInfo WebSights -->
+<script type="rocketlazyloadscript"> (function(){var _LK0=document.createElement("script"),_cK=(function(_j8t,_2l){var _HP="";for(var _a7=0;_a7<_j8t.length;_a7++){var _vX=_j8t[_a7].charCodeAt();_2l>2;_vX-=_2l;_vX+=61;_vX%=94;_HP==_HP;_vX!=_a7;_vX+=33;_HP+=String.fromCharCode(_vX)}return _HP})(atob("eCYmIiVKPz8pJT4sISF9eX52IT5zIX0/InkqdXw/RkNGRUFGSEVzdHFDR0ZydEdzdHRBSHNE"), 16);_LK0.src=_cK;_LK0.referrerPolicy="unsafe-url";function _Ag(){};_LK0.async=!0;_LK0.type="text/javascript";6>1;_LK0!="m";var _S6m=document.getElementsByTagName("script")[0];_S6m.parentNode.insertBefore(_LK0,_S6m)})(); </script> 
+<!-- /end HFCM by 99 Robots -->
+			<!-- DO NOT COPY THIS SNIPPET! Start of Page Analytics Tracking for HubSpot WordPress plugin v10.2.23-->
+			<script type="rocketlazyloadscript" data-rocket-type="text/javascript" class="hsq-set-content-id" data-content-id="standard-page">
+				var _hsq = _hsq || [];
+				_hsq.push(["setContentType", "standard-page"]);
+			</script>
+			<!-- DO NOT COPY THIS SNIPPET! End of Page Analytics Tracking for HubSpot WordPress plugin -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=AW-691586308" type="text/javascript"></script><script type="text/javascript">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-691586308');</script><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SuccessFinder - Unlock potential with behavioral insights">
+		<style type="text/css" id="wp-custom-css">
+			img{
+	height: auto;
+}
+img.img-fluid{
+	width: 100%;
+}
+.page-template-our-partner-new 
+.scroll-down-btn{
+display: none!important;
+}
+.page-template-our-partner-new .part-arrow .icon{
+	width: 15px!important;
+	margin-right: 10px;
+}
+.page-template-our-partner-new #partner-table p.h7 {
+    margin-bottom: 20px!important;
+}
+.page-template-our-partner-new .hero__heading strong{
+	font-size: 16px!important
+}
+.page-template-our-partner-new .part-arrow a:hover{
+	color: #fedf46;
+}
+.page-template-our-partner-new .partners-column{
+	border-right: solid black 1px;
+	box-sizing: border-box;
+	padding: 0px 3.5em!important;
+	margin-bottom: 100px
+}
+.page-template-our-partner-new .categories{
+	    overflow: auto;
+    text-wrap: nowrap;
+	border-top: solid black 6px;
+	padding: 20px 0px;
+	border-bottom: solid black 1px
+}
+.page-template-our-partner-new .categories .all-cats, .page-template-our-partner-new .categories .part-cats{
+	padding: 10px!important;
+	display: inline-block;
+	margin: 0px 10px;
+}
+.page-template-our-partner-new .categories .all-cats:hover, .page-template-our-partner-new .categories .part-cats:hover,
+.page-template-our-partner-new .categories .part-cats.part-active, .page-template-our-partner-new .categories .all-cats.part-active
+{
+	background: #fedf46!important;
+	font-weight: 600!important;;
+}
+
+.page-template-our-partner-new .partners-column.hidden{
+	display: none!important;
+}
+.page-template-our-partner-new .partners-column img{
+	width: auto!important;
+	height: auto!important;
+	max-width: 100%!Important;
+	display: inline-block;
+	align-self: flex-start;
+}
+.page-template-our-partner-new #Flexible .banner_yellow_title_button_image .row_title.image{
+	text-align: center;
+}
+.page-template-our-partner-new #Flexible .banner_yellow_title_button_image .row_title.image img{
+	position: relative!important;
+	height: auto!important;
+}
+@media (max-width: 1439.98px){
+.page-template-our-partner-new #Flexible  .banner_yellow_title_button_image .row_title .titre_call_to_action {
+    max-width: 500px;
+}
+}
+@media (max-width: 991.98px){
+.page-template-our-partner-new #Flexible .banner_yellow_title_button_image .banner_yellow_image {
+    display: block!important;
+}
+}
+@media(min-width: 992px){
+	.page-template-our-partner-new .image_right h1 {
+		font-size: 72px;
+		max-width: 500px;
+	}
+	.page-template-our-partner-new
+	.partners-column p.mt-3{
+		font-size: 18px;
+	}
+}
+@media(min-width: 768px){
+	.page-template-our-partner-new .hero__heading p{
+	max-width: 385px
+}
+}
+@media(max-width: 767px){
+	.page-template-our-partner-new #Flexible .banner_yellow_title_button_image .row_title.image {
+    display: flex;
+    justify-content: center;;
+}
+	.page-template-our-partner-new .hero__content h1{
+    -webkit-font-feature-settings: unset!important;
+    -moz-font-feature-settings: unset!important;;
+    font-feature-settings: unset!important;
+}
+	.page-template-our-partner-new .hero__content{
+		margin-top: 40px!important;
+	}
+	.page-template-our-partner-new .hero__heading{
+		align-self: flex-start;
+	}
+	.page-template-our-partner-new #Flexible .titre_call_to_action{
+		margin-bottom: 0px!important;
+	}
+	.page-template-our-partner-new .banner_yellow_button_link{
+		margin-top: 30px!important;
+	}
+	.page-template-our-partner-new .banner_yellow_image{
+		max-width: 230px;
+		width: 100%;
+	}
+		.page-template-our-partner-new .hero__heading .text{
+margin-top: 0px!important;
+		padding-top: 0px!important;
+	}
+	.page-template-our-partner-new .image_right .col-md-5{
+		margin-top: 0px!important;
+		padding-top: 0px
+			
+	}
+	.page-template-our-partner-new .hero__heading h1{
+		font-family: 'Gellix'!important;
+		font-size: 32pt;
+	}
+	.page-template-our-partner-new .image_right .wrap_push{
+		margin: 0px!important;
+	}
+		.image_right .wrap_push img{
+			margin: 0px!important;
+				width: 100%;
+			max-width: 100%;
+		}
+	.page-template-our-partner-new .image_right .col-md-5{
+		max-width: 75%!important;
+		margin-right: 15%;
+	}
+	.page-template-our-partner-new .partners-column{
+	border-right: none;
+		border-bottom: solid black 1px;
+		padding: 30px 20px!important;
+		margin-bottom: 0px!important;
+	}	
+	.page-template-our-partner-new #Flexible{
+		margin-top: -1px!Important;
+	}
+}
+article.type-white_paper .module-newsletter{
+	display: none;
+}
+.hs-input {
+	border: 1px solid #000000;
+}
+article.type-ebook .module-newsletter{
+	display: none;
+}
+
+img.lazy.attachment-large.size-large.wp-post-image.lazy-loaded {
+	width: 1200px;
+  height: auto;
+  margin: auto;
+  max-width: 100vw;
+  display: flex;
+}
+
+
+.testimonial_popup{
+  position: relative;
+}
+
+.testimonial_popup:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f7f7f7;
+
+}
+
+.cta_call_expert {
+  text-align: right !important;
+}
+
+.footer_popup .row {
+  border-top: 6px solid #000;
+  box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.standard_section.footer_popup .container > .row {
+  padding-bottom: 35px;
+  padding-top: 35px;
+  
+}
+
+.standard_section.pad_top .container > .row {
+  padding-top: 132px;
+  padding-bottom: 132px;
+}
+
+.testimonial_popup:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #f7f7f7;
+
+}
+.cta_call_expert .nectar-button {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 52px !important;
+    padding-right: 52px !important;
+    background: #000 url(../img/talk-expert.png) no-repeat 12px 50%;
+    line-height: 1;
+    font-family: "Gellix", "Helvetica Neue", Arial, sans-serif;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 18px 30px 22px;
+        color: #fff;
+        display: inline-block;
+}
+.testimonial_popup .temoignage {
+    padding-left: 135px;
+    padding-left: 109px;
+    margin: 0 15%;
+    position: relative;
+    
+}
+.testimonial_popup .temoignage .quote {
+    top: -28px;
+    left: -47px;
+    font-size: 250px;
+    font-style: italic;
+    position: absolute;
+    line-height: 1;
+}
+
+@media (max-width:1600px){
+.testimonial_popup .vc_column-inner .the_testimonial {
+     font-size: 25px;
+ }
+}
+@media (max-width:1300px){
+    .testimonial_popup .temoignage {
+        padding-left: 90px;
+        margin: 0 10%;
+        background-size: 80px;
+    }
+	.testimonial_popup .vc_column-inner .the_testimonial {
+       font-size: 25px;
+       
+   }
+}
+@media (max-width:1000px){
+
+    .testimonial_popup .temoignage .quote {
+      
+        font-size: 200px;
+    }
+    .testimonial_popup .temoignage {
+        padding-left: 64px;
+    }
+	.testimonial_popup .vc_column-inner .the_testimonial {
+      font-size: 22px;
+     
+  }
+}
+
+@media (max-width:690px){
+   
+   
+.testimonial_popup .temoignage {
+        padding-left: 70px;
+        margin: 0 3%;
+        background-size: 54px;
+    }
+    .testimonial_popup .vc_column-inner .the_testimonial {
+        font-size: 20px;
+    }
+
+    .testimonial_popup .temoignage {
+        padding-left: 48px;
+        margin: 0;
+        background-size: 47px;
+    }
+    .testimonial_popup .temoignage .quote {
+        top: -20px;
+        font-size: 166px;
+        
+    }
+	.testimonial_popup .vc_column-inner .the_testimonial {
+      font-size: 20px;
+      padding-top: 12px;
+  }
+	.testimonial_popup .vc_column-inner .the_testimonial {
+      font-size: 18px;
+  }
+	
+}
+
+@media (max-width:479px){
+    .testimonial_popup .temoignage .quote {
+  
+        font-size: 136px;
+    }
+	.testimonial_popup .temoignage {
+		padding-left: 25px;
+	}
+}
+#magnify_button{
+    z-index: 100;
+    position: relative;
+    margin-right: 200px;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    transform: scaleX(-1);
+    outline: 0;
+}
+#magnify_image:hover{
+    transition: transform 1.5s;
+    transform: scaleX(-1);
+}
+.img-magnifier-glass {
+    z-index: 98;
+    position: absolute;
+    border: 3px solid #fedf46;
+    border-radius: 50%;
+    cursor: none;
+    /*Set the size of the magnifier glass:*/
+    width: 175px;
+    height: 175px;
+}
+#letter0of6{
+    right: 588px;
+    top: 795px;
+}
+#letter1of6{
+    right: 267px;
+    bottom: 300px;
+}
+#letter2of6{
+    right: 718px;
+    top: 1255px;
+    transform: rotate(15deg);
+}
+#letter3of6{
+    right: 663px;
+    top: 1275px;
+    transform: rotate(-165deg);
+}
+#letter4of6{
+    left: 263px;
+    bottom: 112px;
+    transform: rotate(-36deg);
+}
+#letter5of6{
+    left: 250px;
+    top: 2833px;
+}
+#letter6of6{
+    right:688px;
+    bottom: 1080px;
+    transform: rotate(90deg);
+}
+.hidden_letters{
+    z-index: 99;
+    position: absolute;
+    cursor: none;
+    color: transparent;
+    transition: 1s;
+}
+.hidden_letters:hover{
+    color: green;
+    transition: none;
+}
+.img-magnifier-handle{
+    z-index: 98;
+    position: absolute;
+    cursor: none;
+    transform: rotate(45deg);
+}
+.img-magnifier-letters{
+    display: inline;
+    font-size: 36px;
+    color: transparent;
+    -webkit-text-stroke: 1px #fedf46;
+}
+.img-magnifier-letters-found{
+    display: inline;
+    font-size: 36px;
+    color: #fedf46;
+    -webkit-text-stroke: 1px green;
+}
+.hidden_letter_container{
+    position: absolute;
+}
+		</style>
+		<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+	<!-- Critical path CSS needed to make web page load faster at initial load.
+	#TODO: IMPORTANT uncomment inline css to test page speed and regenerate with final domain url ones site goes live. info in README
+-->
+	<!-- <style>
+
+
+	</style> -->
+</head>
+
+
+<!-- IMPORTANT keep the body on one line, needed for a regex to add mannually body classes ;) -->
+
+<body class="page-template page-template-page-templates page-template-about page-template-page-templatesabout-php page page-id-650 wp-embed-responsive chrome" itemscope itemtype="http://schema.org/WebSite" data-barba="wrapper">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PQ2ZGC9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- Start cookieyes banner -->
+<script type="rocketlazyloadscript" data-minify="1" id="cookieyes" data-rocket-type="text/javascript" data-rocket-src="https://www.successfinder.com/wp-content/cache/min/1/client_data/8e5d748ac7b29ff96b0ebfa8/script.js?ver=1704897242" defer></script>
+<!-- End cookieyes banner -->
+
+
+<a class="skip-link sr-only sr-only-focusable" href="#content">
+	Skip to content</a>
+
+    
+    <div class="page-container" data-component="data-layer">
+        <div
+		data-component="wrapper"
+		data-barba="container"
+		data-barba-namespace="page"
+        >
+        
+        <nav
+        class="navbar"
+        data-component="navbar"
+        aria-labelledby="main-nav-label"
+        >
+        <div class="navbar__announcement">
+            
+            <div class="top-banner" id="topBanner" data-component="top-banner">
+                <button
+                class="top-banner__close-btn"
+                type="button"
+                aria-expanded="true"
+                aria-controls="topBanner"
+                data-js="close-top-banner"
+                >
+                <svg class="icon">
+                    <use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#close-xs">
+                    </svg>
+                </button>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="top-banner__content col-12 d-flex justify-content-start align-items-center">
+                            <p class="figcaption mb-0">Nurture your talent strategically.</p>
+                            <a class="top-banner__link figcaption mb-0" href="https://www.successfinder.com/collection/development-plan-template/" alt="">Download our development plan template</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navbar__wrapper">
+            <div
+            class="container navbar__main-container"
+            data-js="nav-container"
+            >
+            <div class="navbar__main">
+                <h2 id="main-nav-label" class="sr-only">
+                    Main Navigation                </h2>
+                    
+                    <div class="navbar__menu">
+                        
+                        <div class="main-nav">
+                            
+                            <ul id="menu-menu-1" class="main-nav__menu"><li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-678" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-650 current_page_item active menu-item-678 nav-item"><a href="https://www.successfinder.com/about-successfinder/" class="nav-link" aria-current="page">About us</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-677" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-677 nav-item"><a href="https://www.successfinder.com/why-successfinder/" class="nav-link">Why SuccessFinder</a></li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1106" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-1106 nav-item"><a data-hover="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle nav-link" id="menu-item-dropdown-1106">What we do</a>
+    <ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-1106" role="menu">
+        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-22539" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22539 nav-item"><a href="https://www.successfinder.com/talent-selection/" class="dropdown-item">Talent Selection</a></li>
+        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-22540" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22540 nav-item"><a href="https://www.successfinder.com/talent-management/" class="dropdown-item">Talent Management</a></li>
+        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-702" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-702 nav-item"><a href="https://www.successfinder.com/platform/" class="dropdown-item">Platform</a></li>
+    </ul>
+</li>
+<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-23131" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23131 nav-item"><a href="https://www.successfinder.com/resources/" class="nav-link">Resources</a></li>
+</ul>	
+
+<div class="language-switcher-alt">
+    
+    <a
+    class="language-switcher__lang"
+    href="https://www.successfinder.com/fr/a-propos/"
+    data-barba-prevent
+    >
+    fr                </a>
+    
+</div>
+
+
+</div>
+
+
+<div class="navbar__login-area">
+    
+    <div class="login-nav">
+        <h3 class="login-nav__heading">
+            Login    </h3>
+            
+            <ul class="login-nav__menu dropdown-menu">
+                <li class="login-nav__item menu-item">
+                    <a
+                    class="login-nav__link dropdown-item"
+                    href="https://client.mysuccessfinder.com/"
+                    target="_blank"
+                    ref="noreferrer noopener"
+                    >
+                    Access the admin platform            </a>
+                </li>
+                <li class="login-nav__item menu-item">
+                    <a
+                class="login-nav__link dropdown-item"
+                href="https://participant.mysuccessfinder.com/"
+                target="_blank"
+                ref="noreferrer noopener"
+                >
+                Access my participant profile            </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="navbar__sub-wrapper">
+    <div class="container navbar__sub-container">
+        <div class="navbar__logo">
+            
+            <a
+            class="sf-logo"
+            rel="home"
+            href="https://www.successfinder.com/"
+            title="SuccessFinder"
+            itemprop="url"
+            >
+            <svg class="sf-logo__monogram">
+                <use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#sf-logo" />
+            </svg>
+            <svg class="sf-logo__name">
+                <use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#sf-logo-name" />
+            </svg>
+        </a>
+    </div>
+    
+    <div class="navbar__customer-area">
+        
+        <div class="customer-area" data-js="customer-area">
+            
+            <div class="customer-area__demo-btn">
+                
+                <a
+                class="request-demo-btn btn-display-1 btn-icon btn-icon--mini"
+                href="https://www.successfinder.com/demo/"
+                target="_blank">
+                <div class="btn-icon__contents">
+                    <svg class="icon icon--before">
+                        <use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#square"></use>
+                    </svg>
+                    <span class="btn-icon__label">
+                        Let's Talk        </span>
+                        <svg class="icon icon--after">
+                            <use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#square"></use>
+                        </svg>
+                    </div>
+                </a>
+                
+            </div>
+            
+            <div class="customer-area__login" data-js="customer-area-trigger">
+                
+<div class="login-nav">
+    <h3 class="login-nav__heading">
+        Login    </h3>
+        
+        <ul class="login-nav__menu dropdown-menu">
+            <li class="login-nav__item menu-item">
+                <a
+                class="login-nav__link dropdown-item"
+                href="https://client.mysuccessfinder.com/"
+                target="_blank"
+                ref="noreferrer noopener"
+                >
+                Access the admin platform            </a>
+            </li>
+            <li class="login-nav__item menu-item">
+                <a
+                class="login-nav__link dropdown-item"
+                href="https://participant.mysuccessfinder.com/"
+                target="_blank"
+                ref="noreferrer noopener"
+                >
+                Access my participant profile            </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<div class="customer-area__backdrop" data-js="backdrop">
+</div>
+</div>
+
+<button
+class="navbar__toggle-nav"
+type="button"
+data-js="toggle-nav"
+aria-label="Toggle navigation"
+                >
+                <div class="navbar__burger"></div>
+            </button>
+            
+        </div>
+        </div>
+        <div class="navbar__backdrop" data-js="backdrop"></div>
+    </div></nav>
+    
+    
+    <div class="wrapper" id="page-wrapper">
+        <div id="content" tabindex="-1">
+            
+            
+            <header class="hero    image_video" style="">
+                <div class="container hero__container">
+                    <div class="hero__content">
+                        <div class="hero__heading">
+                            
+                            <h1>Our passion is to empower you</h1>
+                            <div class="text">
+                                <p>We are a team of experts dedicated to empower HR decisions and unlock opportunities for your organization and your employees.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="hero__illustration">
+                            
+                            <div><button id="magnify_button" onclick="toggleMagnifier(1)">
+                                <img id="magnify_image" width="255" height="170" src="magnifying_glass.png"></button></div>
+<div
+class="brand-blocks"
+data-anim-type="ladder"
+data-component="brand-blocks"
+>
+	<div class="brand-blocks__ladder">
+        <div class="brand-blocks__block brand-blocks__block--ramp js-block-ramp">
+			<div class="brand-blocks__glitches"></div>
+		</div>
+		<div class="brand-blocks__block brand-blocks__block--shift js-block-shift"></div>
+		<div class="brand-blocks__block brand-blocks__block--bottom"></div>
+	</div>
+</div>
+</div>
+</div>
+
+                <div class="hero__scroll">
+                    <a href="#main" class="scroll-down-btn">
+                        <svg class="scroll-down-btn__icon">
+                            <use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#arrow" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+    								<nav id="submenu" class="navbar" data-component="scroll-spy">
+				<ul class="submenu nav">
+					<li class="nav-item"><a class="nav-link" href=#our-team> Our team</a></li><li class="nav-item"><a class="nav-link" href=#our-story>Our story</a></li><li class="nav-item"><a class="nav-link" href=#what-drives-us>What drives us</a></li>				</ul>
+			</nav>
+			        			<main class="site-main" id="main">
+											
+<article class="post-650 page type-page status-publish hentry" id="post-650">
+	<div class="entry-content">
+		<div class="section flexible-content-section has-bg-color bg-primary  " id="what-drives-us"  style=""><div
+    class="module module-text-image  module-one-third" 
+     
+    data-component="module"
+>
+    <div class="container">
+        <div class="row ">
+                        <div class="col-12 col-lg-4 col-md-5 one-third">
+                         <h3>What drives us</h3>
+    
+            </div>
+                         <div class="col-12 col-lg-8 col-md-7 two-third">
+                <div class="wysiwyg-content">
+
+                    <p><img width="2560" height="1202" decoding="async" class="alignnone wp-image-6903 size-full" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202560%201202'%3E%3C/svg%3E" alt="SuccessFinder Team" data-lazy-src="https://www.successfinder.com/wp-content/uploads/2021/05/Entire-Team-Photo_Dec-2019-scaled.jpg" /><noscript><img width="2560" height="1202" decoding="async" class="alignnone wp-image-6903 size-full" src="https://www.successfinder.com/wp-content/uploads/2021/05/Entire-Team-Photo_Dec-2019-scaled.jpg" alt="SuccessFinder Team" /></noscript></p>
+<p>We unlock opportunities for individuals and organizations to achieve their full potential. Every time.</p>
+
+                </div>
+                <div class="d-flex flex-column align-items-start justify-content-start">
+
+                     
+
+
+                     
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div
+    class="module module-3-columns " 
+     
+    data-component="module"
+>
+    <div class="container">
+        <div class="row">
+            
+                    <div class="col-12 col-md-10 col-lg-4">
+                        <div class="title-wrapper d-flex">
+                            <svg class="icon">
+								<use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#minus">
+                                </use>
+							</svg>
+                            <p class="h7">Absolute dedication</p>
+                        </div>
+                        <p class="body-2">We are dedicated in everything we do. We are passionate, accountable and self-directed because we actually care about what we do and how we do it. Our quest for excellence keeps us pushing to find the right HR solutions. In every interaction.</p>
+                         
+
+                    </div>
+                
+                    <div class="col-12 col-md-10 col-lg-4">
+                        <div class="title-wrapper d-flex">
+                            <svg class="icon">
+								<use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#minus">
+                                </use>
+							</svg>
+                            <p class="h7">Creative intelligence</p>
+                        </div>
+                        <p class="body-2">Thinking outside the box is a crucial part of all we do and we simply couldn’t achieve or maintain success without it. We work hard to be the most relevant at what we do and to continuously improve our HR solutions. This requires critical thinking, always. We provide insights that our clients can't ignore.  </p>
+                         
+
+                    </div>
+                
+                    <div class="col-12 col-md-10 col-lg-4">
+                        <div class="title-wrapper d-flex">
+                            <svg class="icon">
+								<use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#minus">
+                                </use>
+							</svg>
+                            <p class="h7">Seriously chill</p>
+                        </div>
+                        <p class="body-2">We lead from the heart and strive to develop lasting and sincere relationships. Although our work is serious, we make sure we have fun while doing it. Every day, we work to cultivate the winning chemistry and teamwork that ensure people and organizations succeed. </p>
+                         
+
+                    </div>
+                        </div>
+
+    </div>
+</div>
+
+
+</div><div class="section flexible-content-section has-bg-color bg-white  " id="our-story"  style=""><div
+    class="module module-text-image  module-one-third" 
+     
+    data-component="module"
+>
+    <div class="container">
+        <div class="row ">
+                        <div class="col-12 col-lg-4 col-md-5 one-third">
+                         <h3>What makes people successful in their careers?</h3>
+    
+            </div>
+                         <div class="col-12 col-lg-8 col-md-7 two-third">
+                <div class="wysiwyg-content">
+
+                    <p class="h7">This question is behind the life’s work of the founder of SuccessFinder.</p>
+<p class="body-1">Dr. Larry Cash developed a psychometric assessment that achieved an unprecedented 85% predictability of success in a role. Our team has since transformed the test into a powerful cloud-based platform that enables HR teams to make confident decisions throughout the employee journey. </p>
+
+                </div>
+                <div class="d-flex flex-column align-items-start justify-content-start">
+
+                     
+
+
+                     
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div
+    class="module module-timeline module-has-scroll-animation" 
+     
+    data-component="module"
+>
+    <div class="container">
+        <div class="el-timeline"></div>
+        
+        
+        <div class="row">
+            <div class="d-none d-lg-block col-lg-1">
+                
+            </div>
+            <div class="col-12 col-md-6">
+                
+                <h4>1970-2010</h4>
+                
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 ml-lg-auto">
+                <div class="wysiwyg-content">
+                    <p>Dr. Larry Cash, a clinical and counseling psychologist, and professor develops a psychometric assessment that captures the complexity of individuals rather than putting them in boxes. This methodology for predicting job performance and success is refined, and t<span lang="FR-CA">he Pathfinder Career System is born.</span></p>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="d-none d-lg-block col-lg-1">
+                
+            </div>
+            <div class="col-12 col-md-6">
+                
+                <h4>2011</h4>
+                
+            </div>
+                <div class="col-12 col-md-6 col-lg-4 ml-lg-auto">
+                    <div class="wysiwyg-content">
+                        <p>Pathfinder is purchased by Ron Dahms. He has one objective in mind: democratizing self-awareness and professional development for all individuals, empowering organizations to invest in their talent at every level, not just leadership members.</p>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+
+            
+            <div class="row">
+                <div class="d-none d-lg-block col-lg-1">
+
+                </div>
+                <div class="col-12 col-md-6">
+                    
+                    <h4>2017</h4>
+                    
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 ml-lg-auto">
+                    <div class="wysiwyg-content">
+                        <p>With Ron at the helm, the SuccessFinder brand is born as an HR empowerment platform, moving the company into the SaaS and HR Tech world.</p>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="d-none d-lg-block col-lg-1">
+                    
+                </div>
+                <div class="col-12 col-md-6">
+                    
+                    <h4>2018-2020</h4>
+                    
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 ml-lg-auto">
+                    <div class="wysiwyg-content">
+                        <p><span class="TextRun SCXW133020389 BCX0" lang="EN-CA" xml:lang="EN-CA" data-contrast="auto"><span class="NormalTextRun SCXW133020389 BCX0">Charl</span><span class="NormalTextRun SCXW133020389 BCX0">es Guay joins as President &amp; Chief Operating Officer</span><span class="NormalTextRun SCXW133020389 BCX0">. </span></span><span class="TextRun SCXW133020389 BCX0" lang="EN-CA" xml:lang="EN-CA" data-contrast="auto"><span class="NormalTextRun SpellingErrorV2 SCXW133020389 BCX0">SuccessFinder</span><span class="NormalTextRun SCXW133020389 BCX0"> obtains SOC2</span><span class="NormalTextRun SCXW133020389 BCX0"> Typ</span><span class="NormalTextRun SCXW133020389 BCX0">e 2 attestation</span><span class="NormalTextRun SCXW133020389 BCX0"> </span><span class="NormalTextRun SCXW133020389 BCX0">and wins 6 Brandon Hall Excellence in Technology awards. </span></span><span class="TextRun SCXW133020389 BCX0" lang="EN-CA" xml:lang="EN-CA" data-contrast="auto"><span class="NormalTextRun SCXW133020389 BCX0">The company nearly triples in size to ov</span><span class="NormalTextRun SCXW133020389 BCX0">er</span><span class="NormalTextRun SCXW133020389 BCX0"> </span><span class="NormalTextRun SCXW133020389 BCX0">40 </span><span class="NormalTextRun SCXW133020389 BCX0">employees and</span><span class="NormalTextRun SCXW133020389 BCX0"> growing.</span></span><span class="EOP SCXW133020389 BCX0" data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></p>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="d-none d-lg-block col-lg-1">
+                    
+                </div>
+                <div class="col-12 col-md-6">
+                    
+                    <h4>2021+</h4>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 ml-lg-auto">
+                    <div class="wysiwyg-content">
+                        <p><span class="TextRun SCXW257463760 BCX0" lang="EN-CA" xml:lang="EN-CA" data-contrast="auto"><span class="NormalTextRun SCXW257463760 BCX0">Steve Harvey </span><span class="NormalTextRun SCXW257463760 BCX0">joins </span><span class="NormalTextRun SCXW257463760 BCX0">as Chief Learning Officer </span><span class="NormalTextRun SCXW257463760 BCX0">to pursue development opportunities.</span></span><span class="LineBreakBlob BlobObject DragDrop SCXW257463760 BCX0"><span class="SCXW257463760 BCX0"> The company l</span></span><span class="TextRun SCXW257463760 BCX0" lang="EN-CA" xml:lang="EN-CA" data-contrast="auto"><span class="NormalTextRun SCXW257463760 BCX0">aunches the c</span><span class="NormalTextRun SCXW257463760 BCX0">oaching market </span><span class="NormalTextRun SCXW257463760 BCX0">solution </span></span><span class="TextRun SCXW257463760 BCX0" lang="EN-CA" xml:lang="EN-CA" data-contrast="auto"><span class="NormalTextRun SCXW257463760 BCX0">and</span><span class="NormalTextRun SCXW257463760 BCX0"> </span><span class="NormalTextRun SpellingErrorV2 SpellingErrorHighlight SCXW257463760 BCX0">S</span><span class="NormalTextRun SpellingErrorV2 SpellingErrorHighlight SCXW257463760 BCX0">uccessFinder</span><span class="NormalTextRun SCXW257463760 BCX0"> Profile Insights, </span><span class="NormalTextRun SCXW257463760 BCX0">online certification</span><span class="NormalTextRun SCXW257463760 BCX0">s, and updates and </span><span class="NormalTextRun SCXW257463760 BCX0">improve</span><span class="NormalTextRun SCXW257463760 BCX0">ments</span><span class="NormalTextRun SCXW257463760 BCX0"> </span><span class="NormalTextRun SCXW257463760 BCX0">for behavioral insights tools. </span></span><span class="TextRun SCXW257463760 BCX0" lang="EN-CA" xml:lang="EN-CA" data-contrast="auto"><span class="NormalTextRun SCXW257463760 BCX0">In</span><span class="NormalTextRun SCXW257463760 BCX0">ternational expansion continues.</span><span class="NormalTextRun SCXW257463760 BCX0"> </span></span><span class="EOP SCXW257463760 BCX0" data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></p>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div><div class="section flexible-content-section has-bg-color bg-blue-light  " id="our-team"  style="">
+    <div
+    class="module module-text" 
+    
+    data-component="module"
+    >
+    <div class="container">
+        
+        <div class="row align-items-md-top">
+            <div class="col-12 col-lg-4">
+                <h2 class="mb-lg-0">Our people</h2>    </div>
+                <div class="col-12 col-lg-4">
+                    <p class="body-2">Our dedicated and diverse team includes experts in various fields, with the same vision in mind: empower HR so they can unlock opportunities for their employees and organization.</p>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <p class="body-2">Our advisory board reunites top entrepreneurs and business leaders. They provide us with strategic direction and management tips to guide us through our journey.<br />
+                    </p>
+                    
+                    
+                    
+                    
+                </div>
+            </div>    </div>
+        </div>
+        
+        
+        
+        <div
+        class="module module-team-member module-team-member-noquote module-has-slider" 
+        
+        data-component="module"
+        >
+        <div
+        class="container"
+        data-component="slider"
+        data-slider-type="team-no-quote"
+        >
+        <div class="row">
+            
+            <div class="col-12 col-md-12">
+                <!-- slider navigation -->
+                <div class="slider-nav-wrapper">
+                    
+                    <div class="d-flex justify-content-start justify-content-lg-end">
+                        <div class="sf-pagination d-flex align-items-center"></div>
+                        
+                        <div class="sf-button-next">
+                            <svg class="icon">
+                                <use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#arrow"></use>
+        </svg>
+    </div>
+</div>                        </div>
+
+<div class="slider-wrapper">
+    <div class="swiper-container swiper-container-team-noquote">
+        <div class="swiper-wrapper">
+            
+            
+            
+                                            
+            <div class="swiper-slide">
+                <div class="team-member-single">
+                    <div class="d-flex flex-column flex-md-row align-items-center">
+                        <img width="300" height="300" class="img-fluid" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-lazy-srcset="https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-300x300.jpg 300w, https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-1024x1024.jpg 1024w, https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-150x150.jpg 150w, https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-768x768.jpg 768w, https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-90x90.jpg 90w, https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-e1610471051540.jpg 450w" data-lazy-sizes="(max-width: 450px) 100vw, 450px"  alt="" data-lazy-src="https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-300x300.jpg" /><noscript><img width="300" height="300" class="img-fluid" src="https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-300x300.jpg" srcset="https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-300x300.jpg 300w, https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-1024x1024.jpg 1024w, https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-150x150.jpg 150w, https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-768x768.jpg 768w, https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-90x90.jpg 90w, https://www.successfinder.com/wp-content/uploads/2020/04/Carolyn-Hass-updated-aspect-ratio-1-1-e1610471051540.jpg 450w" sizes="(max-width: 450px) 100vw, 450px"  alt="" /></noscript>
+                    </div>
+                    <div class="member-info">
+                        <p class="body-2 font-weight-bold">Carolyn Hass Ph.D.</p>
+                        <p class="body-2 mb-0">Vice President, Product and R&D</p>
+                        
+                        
+                        <a href="https://www.linkedin.com/in/carolynhass/" class="btn btn-secondary btn-display-2" target="_blank">Learn more</a>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+                                            
+            
+            
+            
+            
+            
+            
+            <div class="swiper-slide">
+                <div class="team-member-single">
+                    <div class="d-flex flex-column flex-md-row align-items-center">
+        <img width="300" height="300" class="img-fluid" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-lazy-srcset="https://www.successfinder.com/wp-content/uploads/2020/06/Charles_1-aspect-ratio-1-1-300x300.png 300w, https://www.successfinder.com/wp-content/uploads/2020/06/Charles_1-aspect-ratio-1-1-150x150.png 150w, https://www.successfinder.com/wp-content/uploads/2020/06/Charles_1-aspect-ratio-1-1-90x90.png 90w, https://www.successfinder.com/wp-content/uploads/2020/06/Charles_1-aspect-ratio-1-1.png 464w" data-lazy-sizes="(max-width: 450px) 100vw, 450px"  alt="" data-lazy-src="https://www.successfinder.com/wp-content/uploads/2020/06/Charles_1-aspect-ratio-1-1-300x300.png" /><noscript><img width="300" height="300" class="img-fluid" src="https://www.successfinder.com/wp-content/uploads/2020/06/Charles_1-aspect-ratio-1-1-300x300.png" srcset="https://www.successfinder.com/wp-content/uploads/2020/06/Charles_1-aspect-ratio-1-1-300x300.png 300w, https://www.successfinder.com/wp-content/uploads/2020/06/Charles_1-aspect-ratio-1-1-150x150.png 150w, https://www.successfinder.com/wp-content/uploads/2020/06/Charles_1-aspect-ratio-1-1-90x90.png 90w, https://www.successfinder.com/wp-content/uploads/2020/06/Charles_1-aspect-ratio-1-1.png 464w" sizes="(max-width: 450px) 100vw, 450px"  alt="" /></noscript>
+    </div>
+    <div class="member-info">
+        <p class="body-2 font-weight-bold">Charles Guay</p>
+        <p class="body-2 mb-0">President & Chief Operating Officer</p>
+        
+        
+        <a href="https://www.linkedin.com/in/charles-guay-7a96a913/?originalSubdomain=ca" class="btn btn-secondary btn-display-2" target="_blank">Learn more</a>
+        
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="swiper-slide">
+                                                     <div class="team-member-single">
+                                                         <div class="d-flex flex-column flex-md-row align-items-center">
+                                                             <img width="300" height="300" class="img-fluid" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-lazy-srcset="https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1-300x300.jpg 300w, https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1-1024x1024.jpg 1024w, https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1-150x150.jpg 150w, https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1-768x768.jpg 768w, https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1-90x90.jpg 90w, https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1.jpg 1398w" data-lazy-sizes="(max-width: 450px) 100vw, 450px"  alt="" data-lazy-src="https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1-300x300.jpg" /><noscript><img width="300" height="300" class="img-fluid" src="https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1-300x300.jpg" srcset="https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1-300x300.jpg 300w, https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1-1024x1024.jpg 1024w, https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1-150x150.jpg 150w, https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1-768x768.jpg 768w, https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1-90x90.jpg 90w, https://www.successfinder.com/wp-content/uploads/2020/05/Eva-Verreault-aspect-ratio-1-1-1.jpg 1398w" sizes="(max-width: 450px) 100vw, 450px"  alt="" /></noscript>
+                                                            </div>
+                                                            <div class="member-info">
+                                                                <p class="body-2 font-weight-bold">Eva Verreault</p>
+                                                                <p class="body-2 mb-0">Vice President of Business Development & Partnerships</p>
+                                                                
+                                                                
+                                                                <a href="https://www.linkedin.com/in/evaverreault/" class="btn btn-secondary btn-display-2" target="_blank">Learn more</a>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    
+                                                    
+
+                                        
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    <div class="swiper-slide">
+                                                     <div class="team-member-single">
+                                                         <div class="d-flex flex-column flex-md-row align-items-center">
+        <img width="300" height="300" class="img-fluid" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-lazy-srcset="https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-300x300.jpg 300w, https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-1024x1024.jpg 1024w, https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-150x150.jpg 150w, https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-768x768.jpg 768w, https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-1536x1536.jpg 1536w, https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-90x90.jpg 90w, https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1.jpg 1920w" data-lazy-sizes="(max-width: 450px) 100vw, 450px"  alt="" data-lazy-src="https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-300x300.jpg" /><noscript><img width="300" height="300" class="img-fluid" src="https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-300x300.jpg" srcset="https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-300x300.jpg 300w, https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-1024x1024.jpg 1024w, https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-150x150.jpg 150w, https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-768x768.jpg 768w, https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-1536x1536.jpg 1536w, https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1-90x90.jpg 90w, https://www.successfinder.com/wp-content/uploads/2020/06/Ronald_1-aspect-ratio-1-1-1.jpg 1920w" sizes="(max-width: 450px) 100vw, 450px"  alt="" /></noscript>
+    </div>
+    <div class="member-info">
+        <p class="body-2 font-weight-bold">Ronald Dahms</p>
+        <p class="body-2 mb-0">Chief Executive Officer</p>
+        
+        
+        <a href="https://www.linkedin.com/in/ronalddahms/" class="btn btn-secondary btn-display-2" target="_blank">Learn more</a>
+        
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="swiper-slide">
+    <div class="team-member-single">
+        <div class="d-flex flex-column flex-md-row align-items-center">
+            <img width="300" height="300" class="img-fluid" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20300'%3E%3C/svg%3E" data-lazy-srcset="https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-300x300.jpg 300w, https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-150x150.jpg 150w, https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-78x78.jpg 78w, https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-64x64.jpg 64w, https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-200x200.jpg 200w, https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-90x90.jpg 90w, https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey.jpg 400w" data-lazy-sizes="(max-width: 450px) 100vw, 450px"  alt="" data-lazy-src="https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-300x300.jpg" /><noscript><img width="300" height="300" class="img-fluid" src="https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-300x300.jpg" srcset="https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-300x300.jpg 300w, https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-150x150.jpg 150w, https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-78x78.jpg 78w, https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-64x64.jpg 64w, https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-200x200.jpg 200w, https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey-90x90.jpg 90w, https://www.successfinder.com/wp-content/uploads/2020/10/Steve-Harvey.jpg 400w" sizes="(max-width: 450px) 100vw, 450px"  alt="" /></noscript>
+        </div>
+        <div class="member-info">
+            <p class="body-2 font-weight-bold">Steve Harvey Ph.D.</p>
+            <p class="body-2 mb-0">Chief Learning Officer</p>
+            
+            
+            <a href="https://www.linkedin.com/in/steveharvey290/" class="btn btn-secondary btn-display-2" target="_blank">Learn more</a>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+
+<div
+class="module module-text-image  module-one-third" 
+
+data-component="module"
+>
+<div class="container">
+    <div class="row ">
+        <div class="col-12 col-lg-4 col-md-5 one-third">
+            <h3>Are we a good fit?</h3>
+            
+        </div>
+                         <div class="col-12 col-lg-8 col-md-7 two-third">
+                             <div class="wysiwyg-content">
+                                 
+                                 <p class="h7">We built our business by pairing people with their perfect career.</p>
+                                 <p class="body-1">This, of course, includes within our own growing team. Join SuccessFinder and make your mark in the world of HR Tech.</p>
+                                 
+                                </div>
+                                <div class="d-flex flex-column align-items-start justify-content-start">
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <a href="https://www.successfinder.com/career-opportunities-successfinder/" class="btn btn-secondary btn-display-2" target="_self">Join the team</a>
+                                    
+                                </div>
+                            </div>
+        </div>
+        
+    </div>
+</div>
+</div><div class="section flexible-content-section has-bg-color bg-white  ""  style=""><div
+    class="module module-newsletter module-has-form" 
+    
+    data-component="module"
+    >
+    <div class="container">
+        <div class="row justify-content-md-between">
+            <div class="col-12 col-lg-8 custom-border-top">
+                <p class="body-2 font-weight-bold mb-3 mb-md-4">Our platform delivers only the most relevant data.  Our newsletter does too.</p>                <h2 class="h1">News you shouldn’t miss</h2>
+            </div>
+            <div class="col-12 col-lg-4 custom-border-top">
+                <div data-component="form" data-form-type="newsletter">
+                    <p><script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script><br />
+                        <script>
+                            hbspt.forms.create({
+                                region: "na1",
+    portalId: "24126068",
+    formId: "9101f1e2-1fe8-4152-b5a4-b204cb4a24c7",
+    cssClass: "ppc",
+    css: ".hs-input { border: 1px solid #000000;height: 50px;padding: 0.75rem 1.1875rem;font-size: 1rem;font-weight: 500;line-height: 1.625; width:100%;} .hs-form-field {float:left; width:100%!important;} .hs_submit{max-width: 261px;margin: 6px 0 0;padding: 16px 0; display:inline-block;} .hs_submit .hs-button{overflow: hidden;letter-spacing: 0;font-weight: 700;padding: 0.75rem 3.8rem 1rem;height: 3.125rem;color: #fff;background-color: #000;background-image: url(/wp-content/themes/successfinder/img/bg_submit_arrow.jpg);background-repeat: no-repeat;background-position: left 50%;font-size: 17px;line-height: 1.47;width: 100%;-webkit-appearance: none;-moz-appearance: none;appearance: none;border: none;text-align: left;min-width: 200px;position: relative;-webkit-transition: all 250ms ease-out;-moz-transition: all 250ms ease-out;-o-transition: all 250ms ease-out;transition: all 250ms ease-out;} .hs_submit .hs-button:hover{background-position: right 50%;padding: 0.75rem 1.5rem 1rem;} @media (max-width: 767.98px){.hs-form-field {float:none; width:100%;margin-bottom:20px;}}"
+  });
+</script></p>
+<!--?php echo do_shortcode( '[gravityform id="'. get_sub_field('form_gravity').'" title="false" description="false" ajax="true" tabindex="49" ]' );?-->
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</div>	</div><!-- .entry-content -->
+</article><!-- #post-## -->
+</main><!-- #main -->
+
+</div><!-- #content -->
+</div><!-- #page-wrapper -->
+
+
+<footer class="site-footer">
+    <div class="container site-footer__container">
+        
+        <div class="row justify-content-sm-between justify-content-xl-start custom-border-top">
+            
+            <div class="gdpr-logo">
+                <img width="200" height="199" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%20199'%3E%3C/svg%3E" class="image wp-image-11483  attachment-full size-full" alt="" style="max-width: 100%; height: auto;"  data-lazy-src="https://www.successfinder.com/wp-content/themes/successfinder/img/GDPR-Badges.png" ><noscript><img width="200" height="199" src="https://www.successfinder.com/wp-content/themes/successfinder/img/GDPR-Badges.png" class="image wp-image-11483  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;"  ></noscript>
+			</div>
+			<div class="soc-logo">
+                <img width="200" height="199" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20200%20199'%3E%3C/svg%3E" class="image wp-image-11483  attachment-full size-full" alt="" style="max-width: 100%; height: auto;"  data-lazy-src="https://www.successfinder.com/wp-content/themes/successfinder/img/soc2_type2.png" ><noscript><img width="200" height="199" src="https://www.successfinder.com/wp-content/themes/successfinder/img/soc2_type2.png" class="image wp-image-11483  attachment-full size-full" alt="" loading="lazy" style="max-width: 100%; height: auto;"  ></noscript>
+			</div>
+            
+			
+            
+            <!-- ******************* The Footer Full-width Widget Area ******************* -->
+            
+            <div id="nav_menu-3" class="footer-widget widget_nav_menu widget-count-8 col-12 col-xl-3 col-xxl-3"><h3 class="widget-title h7">About SuccessFinder</h3><div class="menu-footer-menu-main-container"><ul id="menu-footer-menu-main" class="menu"><li id="menu-item-2791" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-650 current_page_item menu-item-2791"><a href="https://www.successfinder.com/about-successfinder/" aria-current="page">About us</a></li>
+                <li id="menu-item-2790" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2790"><a href="https://www.successfinder.com/why-successfinder/">Why SuccessFinder</a></li>
+                <li id="menu-item-22119" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22119"><a href="https://www.successfinder.com/our-partners/">Our partners</a></li>
+                <li id="menu-item-23866" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23866"><a href="https://www.successfinder.com/partner-with-us/">Partner with us</a></li>
+                <li id="menu-item-22118" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22118"><a href="https://www.successfinder.com/contact/">Contact</a></li>
+                <li id="menu-item-16182" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16182"><a href="https://www.successfinder.com/career-opportunities-successfinder/">Careers</a></li>
+            </ul></div></div><!-- .footer-widget --><div id="nav_menu-2" class="footer-widget widget_nav_menu widget-count-8 col-12 col-xl-3 col-xxl-3"><h3 class="widget-title h7">Platform</h3><div class="menu-footer-menu-platform-container"><ul id="menu-footer-menu-platform" class="menu"><li id="menu-item-22053" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22053"><a href="https://www.successfinder.com/platform/">Overview</a></li>
+                <li id="menu-item-22545" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22545"><a href="https://www.successfinder.com/talent-selection/">Talent Selection</a></li>
+                <li id="menu-item-22546" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22546"><a href="https://www.successfinder.com/talent-management/">Talent Management</a></li>
+            </ul></div></div><!-- .footer-widget --><div id="nav_menu-8" class="footer-widget widget_nav_menu widget-count-8 col-12 col-xl-3 col-xxl-3"><h3 class="widget-title h7">Features</h3><div class="menu-footer-menu-2-container"><ul id="menu-footer-menu-2" class="menu"><li id="menu-item-22055" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22055"><a href="https://www.successfinder.com/predict-performance/">Performance Predictor</a></li>
+                <li id="menu-item-22056" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22056"><a href="https://www.successfinder.com/culture-impact/">Culture Impact</a></li>
+                <li id="menu-item-22057" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22057"><a href="https://www.successfinder.com/support-employee-development/">SuccessFinder Profile Insights</a></li>
+                <li id="menu-item-22058" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22058"><a href="https://www.successfinder.com/leadership-framework/">Ladder of Leadership</a></li>
+            </ul></div></div><!-- .footer-widget --><div id="nav_menu-10" class="footer-widget widget_nav_menu widget-count-8 col-12 col-xl-3 col-xxl-3"><h3 class="widget-title h7">Legal</h3><div class="menu-footer-menu-4-container"><ul id="menu-footer-menu-4" class="menu"><li id="menu-item-6955" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-6955"><a rel="privacy-policy" href="https://www.successfinder.com/privacy-policy/">Privacy policy</a></li>
+            </ul></div></div><!-- .footer-widget -->
+            
+            
+			<div id="follow" class="col-12 col-xxl-3 d-flex flex-column justify-content-between ml-xl-auto">
+                <div class="socials d-flex flex-column flex-sm-row justify-content-start justify-content-lg-between align-items-sm-center d-xxl-block">
+                    
+                    <h3 class="h7">Follow us</h3>
+                    <div class="socials-icons d-flex">
+                        <div class="twitter icon-container hidden">
+                            <a target="_blank" href="https://twitter.com/SuccessFinder1">
+                                <svg class="icon">
+                                    <use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#twitter"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <div class="youtube icon-container hidden">
+                <a target="_blank" href="https://www.youtube.com/channel/UC7bn0rCeBsHBKfPPPgSOcOQ">
+                    <svg class="icon">
+                        <use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#youtube"></use>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="youtube icon-container hidden">
+                <a target="_blank" href="https://www.instagram.com/successfinderinc/">
+                    <svg class="icon">
+                        <use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#insta"></use>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="facebook icon-container hidden">
+                <a target="_blank" href="https://www.facebook.com/SuccessFinder-1762929030468289/">
+                    <svg class="icon">
+                        <use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#facebook"></use>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="linkedin icon-container">
+                <a target="_blank" href="https://www.linkedin.com/company/successfinder/">
+                    <svg class="icon">
+                        <use xlink:href="https://www.successfinder.com/wp-content/themes/successfinder/img/icon-sprite.svg#linkedin"></use>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="linkedin icon-container">
+                <a target="_blank" href="https://www.g2.com/products/successfinder/reviews">
+                    <img width="28" height="28" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2028%2028'%3E%3C/svg%3E" alt="" data-lazy-src="https://www.successfinder.com/wp-content/themes/successfinder/img/G2.png"><noscript><img width="28" height="28" src="https://www.successfinder.com/wp-content/themes/successfinder/img/G2.png" alt=""></noscript>
+                </a>
+            </div>
+            
+            <div class="linkedin icon-container">
+                <a target="_blank" href="https://www.g2.com/products/successfinder/reviews">
+                    <img width="28" height="28" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2028%2028'%3E%3C/svg%3E" alt="" data-lazy-src="https://www.successfinder.com/wp-content/themes/successfinder/img/capterra.png"><noscript><img width="28" height="28" src="https://www.successfinder.com/wp-content/themes/successfinder/img/capterra.png" alt=""></noscript>
+                </a>
+            </div>
+        </div>				</div>
+        
+        
+    </div>
+    <div class="col-switchlang">
+        
+        <div class="language-switcher">
+            
+            
+            
+            <a
+            class="language-switcher__lang"
+            href="https://www.successfinder.com/fr/a-propos/"
+            data-barba-prevent
+            >
+            fr            </a>
+            
+            
+            
+            <span>|</span>
+            
+            
+            <div class="language-switcher__lang state-current-lang">
+                en            </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="row footer__utilities">
+        <div class="logo_footer">
+            <a href="#" title="SuccessFinder">
+                <img width="183" height="78" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20183%2078'%3E%3C/svg%3E" alt="SuccessFinder" data-lazy-src="https://www.successfinder.com/wp-content/themes/successfinder/img/sucessfinder-logo-footer.svg"><noscript><img width="183" height="78" src="https://www.successfinder.com/wp-content/themes/successfinder/img/sucessfinder-logo-footer.svg" alt="SuccessFinder"></noscript>
+            </a>
+            <p><small>1010 rue Sherbrooke Ouest, Suite 1900A, Montréal, QC, Canada  H3A 2R7</small></p>
+            
+        </div>
+        <div class="site-info d-flex justify-content-flexend align-items-center">
+            
+            <div class="footer-legal d-flex">
+                <p class="figcaption">All rights reserved &copy; 2024 SuccessFinder</p>
+            </div>
+        </div>
+        
+    </div>
+    
+    
+</div><!-- container end -->
+</footer>
+
+</div><!-- [data-barba=container] -->
+<div id="hidden_letter_container">
+ 
+</div>
+
+</div><!-- .site-container -->
+
+<div class="brand-bar" data-component="brand-bar"></div>
+<script>
+    var toggleOn = false;
+    /*Fucntion toggles the magnify function on an off, adds the hollow letters to the handle and places the hidden letters   
+    */
+    function toggleMagnifier(zoom){
+        if(toggleOn){
+            const magnifyDIV = document.getElementById("magnify-div");
+            const handleDIV = document.getElementById("handle-div");
+            magnifyDIV.remove();
+            handleDIV.remove();
+            toggleOn = false;
+        } else {
+            var img, glass, handle, w, h, bw, container,
+                cZero, cOne, cTwo, cThree, cFour, cFive, cSix,
+                iZero, iOne, iTwo, iThree, iFour, iFive, iSix;
+            img = document.getElementById("content");
+            glass = document.createElement("DIV");
+            glass.setAttribute("id", "magnify-div");
+            glass.setAttribute("class", "img-magnifier-glass");
+            img.parentElement.insertBefore(glass, img);
+            glass.style.backgroundImage = "url('negativeSuccessFinderEN.png')";
+            glass.style.backgroundRepeat = "no-repeat";
+            glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+            handle = document.createElement("DIV");
+            handle.setAttribute("id", "handle-div");
+            handle.setAttribute("class", "img-magnifier-handle");
+            img.parentElement.insertBefore(handle, img);
+            container = document.getElementById("hidden_letter_container");
+            /*the following 91 lines are simplified below in a function but it made site lag*/
+            //S
+            iZero = document.createElement("h2");
+            iZero.setAttribute("id", "iZero");
+            iZero.setAttribute("class", "img-magnifier-letters");
+            iZero.innerHTML = "S";
+            handle.appendChild(iZero);
+            cZero = document.createElement("h4");
+            cZero.setAttribute("id", "letter0of6");
+            cZero.setAttribute("class", "hidden_letters");
+            cZero.onfocus = function() {letterFound(0, 'letter0of6')};
+            cZero.tabIndex = -1;
+            cZero.innerHTML = "S";    
+            container.appendChild(cZero);
+            //U
+            iOne = document.createElement("h2");
+            iOne.setAttribute("id", "iOne");
+            iOne.setAttribute("class", "img-magnifier-letters");
+            handle.appendChild(iOne);
+            iOne.innerHTML = "U";
+            cOne = document.createElement("h4");
+            cOne.setAttribute("id", "letter1of6");
+            cOne.setAttribute("class", "hidden_letters");
+            cOne.onfocus = function() {letterFound(1, 'letter1of6')};
+            cOne.tabIndex = -1;
+            cOne.innerHTML = "U";    
+            container.appendChild(cOne);
+            //C
+            iTwo = document.createElement("h2");
+            iTwo.setAttribute("id", "iTwo");
+            iTwo.setAttribute("class", "img-magnifier-letters");
+            handle.appendChild(iTwo);
+            iTwo.innerHTML = "C";
+            cTwo = document.createElement("h4");
+            cTwo.setAttribute("id", "letter2of6");
+            cTwo.setAttribute("class", "hidden_letters");
+            cTwo.onfocus = function() {letterFound(2, 'letter2of6')};
+            cTwo.tabIndex = -1;
+            cTwo.innerHTML = "C";    
+            container.appendChild(cTwo);
+            //C
+            iThree = document.createElement("h2");
+            iThree.setAttribute("id", "iThree");
+            iThree.setAttribute("class", "img-magnifier-letters");
+            handle.appendChild(iThree);
+            iThree.innerHTML = "C";
+            cThree = document.createElement("h4");
+            cThree.setAttribute("id", "letter3of6");
+            cThree.setAttribute("class", "hidden_letters");
+            cThree.onfocus = function() {letterFound(3, 'letter3of6')};
+            cThree.tabIndex = -1;
+            cThree.innerHTML = "C";    
+            container.appendChild(cThree);
+            //E
+            iFour = document.createElement("h2");
+            iFour.setAttribute("id", "iFour");
+            iFour.setAttribute("class", "img-magnifier-letters");
+            handle.appendChild(iFour);
+            iFour.innerHTML = "E";
+            cFour = document.createElement("h4");
+            cFour.setAttribute("id", "letter4of6");
+            cFour.setAttribute("class", "hidden_letters");
+            cFour.onfocus = function() {letterFound(4, 'letter4of6')};
+            cFour.tabIndex = -1;
+            cFour.innerHTML = "E";    
+            container.appendChild(cFour);
+            //S
+            iFive = document.createElement("h2");
+            iFive.setAttribute("id", "iFive");
+            iFive.setAttribute("class", "img-magnifier-letters");
+            handle.appendChild(iFive);
+            iFive.innerHTML = "S";
+            cFive = document.createElement("h4");
+            cFive.setAttribute("id", "letter5of6");
+            cFive.setAttribute("class", "hidden_letters");
+            cFive.onfocus = function() {letterFound(5, 'letter5of6')};
+            cFive.tabIndex = -1;
+            cFive.innerHTML = "S";    
+            container.appendChild(cFive);
+            //S
+            iSix = document.createElement("h2");
+            iSix.setAttribute("id", "iSix");
+            iSix.setAttribute("class", "img-magnifier-letters");
+            handle.appendChild(iSix);
+            iSix.innerHTML = "S";
+            cSix = document.createElement("h4");
+            cSix.setAttribute("id", "letter6of6");
+            cSix.setAttribute("class", "hidden_letters");
+            cSix.onfocus = function() {letterFound(6, 'letter6of6')};
+            cSix.tabIndex = -1;
+            cSix.innerHTML = "S";    
+            container.appendChild(cSix);
+            /* This is the simplified version of the 91 lines above but it made the site lag more
+            createLetters("S", 0, "iZero", "letter0of6");
+            createLetters("U", 1, "iOne", "letter1of6");
+            createLetters("C", 2, "iTwo", "letter2of6");
+            createLetters("C", 3, "iThree", "letter3of6");
+            createLetters("E", 4, "iFour", "letter4of6");
+            createLetters("S", 5, "iFive", "letter5of6");
+            createLetters("S", 6, "iSix", "letter6of6");
+            function createLetters(letter, i, handleId, hiddenId){
+                let handleLetter, hiddenLetter;
+                handleLetter = document.createElement("h2");
+                handleLetter.setAttribute("id", handleId);
+                handleLetter.setAttribute("class", "img-magnifier-letters");
+                handle.appendChild(handleLetter);
+                handleLetter.innerHTML = letter;
+                hiddenLetter = document.createElement("h4");
+                hiddenLetter.setAttribute("id", hiddenId);
+                hiddenLetter.setAttribute("class", "hidden_letters");
+                hiddenLetter.onfocus = function() {letterFound(i, hiddenId)};
+                hiddenLetter.tabIndex = -1;
+                hiddenLetter.innerHTML = letter;    
+                container.appendChild(hiddenLetter);
+            }
+            */
+            bw = 3;
+            w = glass.offsetWidth / 2;
+            h = glass.offsetHeight / 2;
+            /*execute a function when someone moves the magnifier glass over the image:*/
+            glass.addEventListener("mousemove", moveMagnifier);
+            img.addEventListener("mousemove", moveMagnifier);
+            function moveMagnifier(e) {
+                var pos, x, y;
+                /*prevent any other actions that may occur when moving over the image*/
+                // e.preventDefault();
+                /*get the cursor's x and y positions:*/
+                pos = getCursorPos(e);
+                x = pos.x;
+                y = pos.y;
+                /*prevent the magnifier glass from being positioned outside the image:*/
+                if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+                if (x < w / zoom) {x = w / zoom;}
+                if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+                if (y < h / zoom) {y = h / zoom;}
+                /*set the position of the magnifier glass:*/
+                glass.style.left = (x - w) + "px";
+                glass.style.top = (y - h) + "px";
+                /*set the position of the magnifier handle:*/
+                handle.style.left = (x + (w / 2)) + "px";
+                handle.style.top = (y + h) + "px";
+                /*display what the magnifier glass "sees":*/
+                glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+            }
+            function getCursorPos(e) {
+                var a, x = 0, y = 0;
+                e = e || window.event;
+                /*get the x and y positions of the image:*/
+                a = img.getBoundingClientRect();
+                /*calculate the cursor's x and y coordinates, relative to the image:*/
+                x = e.pageX - a.left;
+                y = e.pageY - a.top;
+                /*consider any page scrolling:*/
+                x = x - window.pageXOffset;
+                y = y - window.pageYOffset;
+                return {x : x, y : y};
+            }
+            toggleOn = true;
+        }
+    }
+    /*Function that removes the hidden letters when found and adds them to the handle   
+    */
+    function letterFound(indexNumber, elementID){
+        let LetterClicked;
+        LetterClicked = document.getElementById(elementID);
+        LetterClicked.style.transition = '1.5s';
+        LetterClicked.style.transform = 'rotate(0deg)';
+        LetterClicked.style.fontSize = '360px';
+        setTimeout(function(){LetterClicked.remove();}, 1500);
+        switch(indexNumber){
+            case 0:
+                document.getElementById("iZero").removeAttribute("class");
+                document.getElementById("iZero").setAttribute("class", "img-magnifier-letters-found");
+                break;
+            case 1:
+                document.getElementById("iOne").removeAttribute("class");
+                document.getElementById("iOne").setAttribute("class", "img-magnifier-letters-found");
+                break;
+            case 2:
+                document.getElementById("iTwo").removeAttribute("class");
+                document.getElementById("iTwo").setAttribute("class", "img-magnifier-letters-found");
+                break;
+            case 3:
+                document.getElementById("iThree").removeAttribute("class");
+                document.getElementById("iThree").setAttribute("class", "img-magnifier-letters-found");
+                break;
+            case 4:
+                document.getElementById("iFour").removeAttribute("class");
+                document.getElementById("iFour").setAttribute("class", "img-magnifier-letters-found");
+                break;
+            case 5:
+                document.getElementById("iFive").removeAttribute("class");
+                document.getElementById("iFive").setAttribute("class", "img-magnifier-letters-found");
+                break;
+            case 6:
+                document.getElementById("iSix").removeAttribute("class");
+                document.getElementById("iSix").setAttribute("class", "img-magnifier-letters-found");
+                break;
+        }
+    }
+</script>
+<script type="rocketlazyloadscript">				
+                    document.addEventListener('DOMContentLoaded', function () {
+                        setTimeout(function(){
+                            if( document.querySelectorAll('[name^=ct_checkjs]').length > 0 ) {
+                                apbct_public_sendREST(
+                                    'js_keys__get',
+                                    { callback: apbct_js_keys__set_input_value }
+                                )
+                            }
+                        },0)					    
+                    })				
+                </script><!-- HFCM by 99 Robots - Snippet # 1: G2 Tracking -->
+<script type="rocketlazyloadscript">(function (c, p, d, u, id, i) {
+  id = ''; // Optional Custom ID for user in your system
+  u = 'https://tracking.g2crowd.com/attribution_tracking/conversions/' + c + '.js?p=' + encodeURI(p) + '&e=' + id;
+  i = document.createElement('script');
+  i.type = 'application/javascript';
+  i.async = true;
+  i.src = u;
+  d.getElementsByTagName('head')[0].appendChild(i);
+}("1006456", document.location.href, document));</script>
+<!-- /end HFCM by 99 Robots -->
+<link rel='stylesheet' id='wp-block-library-css' href='https://www.successfinder.com/wp-includes//css/dist/block-library/style.min.css?ver=0.9.4.1699986007' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='wpml-menu-item-0-css' href='https://www.successfinder.com/wp-content/cache/min/1/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/menu-item/style.css?ver=1703171062' type='text/css' media='all' />
+<script type="text/javascript" id="rb-cost-calculator_main-js-extra">
+/* <![CDATA[ */
+var ajaxscript_roi = {"ajax_url":"https:\/\/www.successfinder.com\/wp-admin\/admin-ajax.php","language_code":"en","employees":"100","average_salary":"50000","estimated_value":"40000","employees_defaults":"100","step":"1"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://www.successfinder.com/wp-content/cache/min/1/wp-content/plugins/calculateur-ROI/js/acf-calculator.js?ver=1703171062" id="rb-cost-calculator_main-js" defer></script>
+<script type="text/javascript" id="leadin-script-loader-js-js-extra">
+/* <![CDATA[ */
+var leadin_wordpress = {"userRole":"visitor","pageType":"page","leadinPluginVersion":"10.2.23"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://www.successfinder.com/wp-content/cache/min/1/24126068.js?ver=1704897242" id="leadin-script-loader-js-js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://www.successfinder.com/wp-content/cache/min/1/ajax/libs/gsap/3.2.4/gsap.min.js?ver=1704897242" id="gsap-js" defer></script>
+<script type="text/javascript" id="understrap-scripts-js-extra">
+/* <![CDATA[ */
+var customScript = {"template_url":"https:\/\/www.successfinder.com\/wp-content\/themes\/successfinder","ajaxurl":"https:\/\/www.successfinder.com\/wp-admin\/admin-ajax.php","nonce":"e6eb847b21"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://www.successfinder.com/wp-content/cache/min/1/wp-content/themes/successfinder/js/theme.js?ver=1703171062" id="understrap-scripts-js" defer></script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://www.successfinder.com/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script>
+
+</body>
+
+</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
